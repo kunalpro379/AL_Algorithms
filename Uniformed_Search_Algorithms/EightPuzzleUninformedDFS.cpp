@@ -3,6 +3,7 @@
 #include <set>
 #include <stack>
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
@@ -12,12 +13,15 @@ struct State
     int zeroX, zeroY;          // Position of the empty tile (0)
     string path;               // Path taken to reach this state
 
-    State(vector<vector<int>> b, int x, int y, string p) : board(b), zeroX(x), zeroY(y), path(p) {}
+    State(vector<vector<int>> b, int x, int y, string p)
+        : board(b), zeroX(x), zeroY(y), path(p) {}
 
     // Check if this state is the goal state
     bool isGoal() const
     {
-        return board == vector<vector<int>>{{1, 2, 3}, {4, 5, 6}, {7, 8, 0}};
+        return board == vector<vector<int>>{{1, 2, 3},
+                                            {4, 5, 6},
+                                            {7, 8, 0}};
     }
 
     // Print the board
@@ -35,12 +39,40 @@ struct State
     }
 };
 
+// Function to convert board to string for visited set
+string boardToString(const vector<vector<int>> &board)
+{
+    string result;
+    for (const auto &row : board)
+    {
+        for (int val : row)
+        {
+            result += to_string(val);
+        }
+    }
+    return result;
+}
+
+// Function to get move direction as string
+string getMoveDirection(int dx, int dy)
+{
+    if (dx == 1)
+        return "D";
+    if (dx == -1)
+        return "U";
+    if (dy == 1)
+        return "R";
+    return "L";
+}
+
 // Function to get all possible moves from the current state
 vector<State> getSuccessors(const State &current)
 {
     vector<State> successors;
-    vector<pair<int, int>> moves = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}}; // Down, Up, Right, Left
-    for (const auto &move : moves)                                     // Use traditional loop
+    // Down, Up, Right, Left
+    vector<pair<int, int>> moves = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+    for (const auto &move : moves)
     {
         int dx = move.first;
         int dy = move.second;
@@ -53,8 +85,15 @@ vector<State> getSuccessors(const State &current)
         {
             // Create a new board configuration
             vector<vector<int>> newBoard = current.board;
-            swap(newBoard[current.zeroX][current.zeroY], newBoard[newX][newY]);
-            string newPath = current.path + (newPath.empty() ? "" : " ") + to_string(newBoard[newX][newY]);
+            swap(newBoard[current.zeroX][current.zeroY],
+                 newBoard[newX][newY]);
+
+            // Add move direction to path
+            string newPath = current.path;
+            if (!newPath.empty())
+                newPath += " ";
+            newPath += getMoveDirection(dx, dy);
+
             successors.emplace_back(newBoard, newX, newY, newPath);
         }
     }
@@ -62,12 +101,13 @@ vector<State> getSuccessors(const State &current)
 }
 
 // DFS Algorithm
-void dfs(const State &initialState)
+bool dfs(const State &initialState)
 {
     stack<State> s;
-    set<vector<vector<int>>> visited; // To keep track of visited states
+    set<string> visited; // To keep track of visited states using string representation
+
     s.push(initialState);
-    visited.insert(initialState.board);
+    visited.insert(boardToString(initialState.board));
 
     while (!s.empty())
     {
@@ -77,39 +117,47 @@ void dfs(const State &initialState)
         // Check if we reached the goal state
         if (current.isGoal())
         {
+            cout << "Solution found!\n";
             current.print();
-            return;
+            return true;
         }
 
         // Generate successors and add them to the stack
         vector<State> successors = getSuccessors(current);
         for (const State &successor : successors)
         {
-            if (visited.find(successor.board) == visited.end())
-            { // Check if not visited
-                visited.insert(successor.board);
+            string boardStr = boardToString(successor.board);
+            if (visited.find(boardStr) == visited.end())
+            {
+                visited.insert(boardStr);
                 s.push(successor);
             }
         }
     }
 
-    cout << "No solution found." << endl;
+    return false;
 }
 
 int main()
 {
-    // Updated initial configuration of the 8-puzzle
+    // Initial configuration of the 8-puzzle
     vector<vector<int>> initialBoard = {
         {1, 2, 3},
-        {4, 0, 6},
-        {5, 7, 8} // 0 represents the empty space
+        {4, 5, 6},
+        {0, 7, 8} // 0 represents the empty space
     };
 
     // Create the initial state
-    State initialState(initialBoard, 1, 1, ""); // zeroX = 1, zeroY = 1 (position of 0)
-    cout << "Starting DFS for 8-puzzle...\n";
-    dfs(initialState);
-    cout << "Finished." << endl;
+    State initialState(initialBoard, 2, 0, "");
+
+    cout << "Initial state:\n";
+    initialState.print();
+    cout << "\nSearching for solution...\n\n";
+
+    if (!dfs(initialState))
+    {
+        cout << "No solution found.\n";
+    }
 
     return 0;
 }

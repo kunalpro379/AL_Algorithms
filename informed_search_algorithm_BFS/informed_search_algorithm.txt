@@ -1,0 +1,67 @@
+Informed search algorithms are a category of search algorithms in artificial intelligence (AI) that utilize additional information (called heuristics) to make more intelligent decisions when exploring the search space. Unlike uninformed search methods (like Breadth-First Search or Depth-First Search), which explore the search space blindly, informed search algorithms guide the search toward a goal more efficiently by using problem-specific knowledge.
+
+Key Characteristics of Informed Search:
+Heuristic Function:
+
+Informed search uses a heuristic function, denoted as h(n), which estimates the cost from the current state to the goal state.
+The heuristic helps prioritize which nodes or states to explore first, making the search process more efficient.
+Evaluation Function:
+
+Some informed search algorithms also use an evaluation function that combines the heuristic cost with the actual cost to reach the current state. For example, in A* search, this is represented as:
+
+f(n)=g(n)+h(n)
+where:
+g(n) is the actual cost to reach node 
+𝑛
+n,
+h(n) is the heuristic estimate from node 
+𝑛
+n to the goal,
+f(n) is the total estimated cost to reach the goal via node 
+𝑛
+n.
+Common Informed Search Algorithms:
+Greedy Best-First Search (GBFS):
+
+Focuses on using only the heuristic function h(n) to choose the next node to explore.
+It expands the node that seems closest to the goal based on the heuristic.
+Advantage: Fast in practice.
+Disadvantage: Not always complete and may find suboptimal solutions, as it doesn't consider the path cost.
+A Search*:
+
+Uses both the actual cost so far (g(n)) and the heuristic estimate to the goal (h(n)).
+It expands nodes based on the combined evaluation function f(n) = g(n) + h(n), ensuring it finds the least-cost path to the goal.
+Advantage: Complete and optimal when an admissible heuristic is used (one that never overestimates the cost).
+Disadvantage: Can be memory-intensive as it stores all generated nodes.
+Beam Search:
+
+Similar to Best-First Search, but only keeps a fixed number of the best candidates (called the "beam width") at each level.
+It sacrifices completeness and optimality for efficiency and reduced memory usage.
+Hill Climbing:
+
+A local search algorithm that continuously moves in the direction of increasing heuristic value (greedy approach) to find a peak or solution.
+Advantage: Simple and memory-efficient.
+Disadvantage: Prone to getting stuck in local optima, plateaus, or ridges.
+Heuristic:
+A heuristic is a problem-specific function that estimates the cost from a current state to the goal. A good heuristic significantly reduces the search space.
+Example: In the 8-puzzle problem, a common heuristic is the Manhattan distance, which estimates the number of moves needed to place each tile in its correct position by summing the absolute distances.
+Example: A* Search in Pathfinding
+In pathfinding, A* search can be used to find the shortest path from a start node to a goal node. It uses the actual distance from the start node and the estimated distance to the goal to prioritize which paths to explore, ensuring that it finds the optimal route.
+
+g(n): The cost from the start node to the current node.
+h(n): The estimated cost from the current node to the goal (e.g., straight-line distance).
+f(n): The estimated total cost of the path passing through node 
+𝑛
+n.
+Benefits of Informed Search:
+Efficiency: By using heuristic knowledge, informed search can find solutions faster than uninformed methods.
+Optimality: Some informed search algorithms like A* can guarantee finding the optimal solution if the heuristic is admissible.
+Uninformed vs. Informed Search:
+Aspect	Uninformed Search	Informed Search
+Knowledge used	No additional knowledge beyond problem definition	Uses heuristics or domain-specific knowledge
+Examples	BFS, DFS, Uniform Cost Search	A*, Greedy Best-First, Hill Climbing
+Efficiency	Can be inefficient, explores blindly	More efficient, prioritizes promising paths
+Optimality	Depends on the algorithm (e.g., UCS is optimal)	A* is optimal with admissible heuristics
+Memory usage	May explore a large number of states	May use more memory but with more targeted search
+Conclusion:
+Informed search algorithms make use of problem-specific heuristics to guide the search more intelligently toward the goal, leading to more efficient and often faster solutions than uninformed search methods. The choice of an informed search algorithm depends on the specific problem and the quality of the heuristic available.

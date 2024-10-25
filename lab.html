@@ -1,0 +1,533 @@
+1. Implementing HTML
+a. Creating Heading with Background Color
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heading with Background Color</title>
+</head>
+<body>
+    <h1 style="background-color: lightblue;">This is a Heading with Background Color</h1>
+</body>
+</html>
+b. Importing an Image into a Website
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Import</title>
+</head>
+<body>
+    <h2>Importing an Image</h2>
+    <img src="https://via.placeholder.com/150" alt="Sample Image" />
+</body>
+</html>
+c. Creating a Hyperlink using an Anchor Tag
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyperlink Example</title>
+</head>
+<body>
+    <h2>Hyperlink Example</h2>
+    <a href="https://www.example.com" target="_blank">Go to Example Website</a>
+</body>
+</html>
+d. Creating a Table and Inserting Values in Each Row
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Table</title>
+</head>
+<body>
+    <h2>Table Example</h2>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Occupation</th>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>25</td>
+            <td>Developer</td>
+        </tr>
+        <tr>
+            <td>Sarah</td>
+            <td>30</td>
+            <td>Designer</td>
+        </tr>
+        <tr>
+            <td>Mark</td>
+            <td>35</td>
+            <td>Manager</td>
+        </tr>
+    </table>
+</body>
+</html>
+2. Implementing CSS
+a. Styling a Button with Inline CSS
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline CSS for Button</title>
+</head>
+<body>
+    <h2>Styled Button</h2>
+    <button style="background-color: blue; color: white; padding: 10px 20px;">Click Me</button>
+</body>
+</html>
+b. Styling a List of Items with Internal CSS
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled List</title>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+        li {
+            color: red;
+            font-size: 18px;
+        }
+        li:nth-child(2) {
+            color: green;
+            font-size: 20px;
+        }
+        li:nth-child(3) {
+            color: blue;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Styled List</h2>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+</body>
+</html>
+c. Styling a Header and Paragraph with External CSS
+HTML File (index.html):
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>External CSS Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>This is a Header</h1>
+    <p>This is a paragraph styled with external CSS.</p>
+</body>
+</html>
+External CSS File (styles.css):
+css
+Copy code
+h1 {
+    color: darkcyan;
+    background-color: lightgray;
+    text-align: center;
+}
+
+p {
+    font-size: 18px;
+    color: darkblue;
+    margin-left: 20px;
+}
+
+
+
+
+
+
+3. JavaScript Programs
+a. Finding the Fibonacci Series
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Series</title>
+    <script>
+        function fibonacciSeries(n) {
+            let fib = [0, 1];
+            for (let i = 2; i < n; i++) {
+                fib[i] = fib[i - 1] + fib[i - 2];
+            }
+            return fib;
+        }
+
+        function displayFibonacci() {
+            const n = prompt("Enter the number of terms for the Fibonacci series:");
+            const result = fibonacciSeries(n);
+            alert("Fibonacci Series: " + result.join(', '));
+        }
+    </script>
+</head>
+<body>
+    <h2>Fibonacci Series</h2>
+    <button onclick="displayFibonacci()">Generate Fibonacci Series</button>
+</body>
+</html>
+b. Finding the Factorial of a Number
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial of a Number</title>
+    <script>
+        function factorial(n) {
+            if (n === 0 || n === 1) return 1;
+            return n * factorial(n - 1);
+        }
+
+        function displayFactorial() {
+            const num = prompt("Enter a number:");
+            const result = factorial(num);
+            alert("Factorial of " + num + " is " + result);
+        }
+    </script>
+</head>
+<body>
+    <h2>Factorial Program</h2>
+    <button onclick="displayFactorial()">Find Factorial</button>
+</body>
+</html>
+4. JavaScript Programs for Interactive Elements
+a. Creating a Dropdown Menu that Hides Options When Clicked
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Menu</title>
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById("myDropdown");
+            if (dropdown.style.display === "none") {
+                dropdown.style.display = "block";
+            } else {
+                dropdown.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Dropdown Menu</h2>
+    <button onclick="toggleDropdown()">Click to Toggle Menu</button>
+    <ul id="myDropdown" style="display: block;">
+        <li>Option 1</li>
+        <li>Option 2</li>
+        <li>Option 3</li>
+    </ul>
+</body>
+</html>
+b. Changing the Background Color of an Element When Mouse Enters It
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Enter Event</title>
+    <style>
+        #colorBox {
+            width: 200px;
+            height: 100px;
+            background-color: lightgray;
+        }
+    </style>
+    <script>
+        function changeBackgroundColor(element) {
+            element.style.backgroundColor = "lightgreen";
+        }
+
+        function resetBackgroundColor(element) {
+            element.style.backgroundColor = "lightgray";
+        }
+    </script>
+</head>
+<body>
+    <h2>Change Background Color on Mouse Enter</h2>
+    <div id="colorBox" onmouseenter="changeBackgroundColor(this)" onmouseleave="resetBackgroundColor(this)">
+        Hover over me!
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+5. JavaScript Programs
+a. Implementing a Try-Catch Block to Handle a TypeError
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try-Catch Example</title>
+    <script>
+        function accessUndefinedProperty() {
+            try {
+                let obj = undefined;
+                console.log(obj.property); // Trying to access a property of an undefined object
+            } catch (error) {
+                if (error instanceof TypeError) {
+                    console.error("TypeError caught: " + error.message);
+                } else {
+                    console.error("An unknown error occurred: " + error.message);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Try-Catch Block Example</h2>
+    <button onclick="accessUndefinedProperty()">Trigger TypeError</button>
+</body>
+</html>
+b. Creating a Class and Deleting a Property
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class and Object Example</title>
+    <script>
+        class Student {
+            constructor(name, rollNo) {
+                this.name = name;
+                this.rollNo = rollNo;
+            }
+        }
+
+        function createAndDeleteProperty() {
+            let student = new Student("John", 101);
+            console.log("Before deleting rollNo:", student);
+            
+            // Deleting the rollNo property
+            delete student.rollNo;
+            
+            console.log("After deleting rollNo:", student);
+        }
+    </script>
+</head>
+<body>
+    <h2>Class and Object - Delete Property</h2>
+    <button onclick="createAndDeleteProperty()">Create and Delete Property</button>
+</body>
+</html>
+6. JavaScript Programs for String Manipulation and Date/Time
+a. Capitalizing the Entire String and the First Letter of Each Word
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitalize String</title>
+    <script>
+        function capitalizeString(str) {
+            // Capitalize the entire string
+            const upperCaseStr = str.toUpperCase();
+            console.log("Uppercase String: ", upperCaseStr);
+
+            // Capitalize the first letter of each word
+            const capitalizedWords = str.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
+            console.log("Capitalized Words: ", capitalizedWords);
+        }
+
+        function displayCapitalizedStrings() {
+            const input = prompt("Enter a string:");
+            capitalizeString(input);
+        }
+    </script>
+</head>
+<body>
+    <h2>Capitalize String</h2>
+    <button onclick="displayCapitalizedStrings()">Capitalize String</button>
+</body>
+</html>
+b. Displaying the Current Date and Time of Day
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Date and Time</title>
+    <script>
+        function displayCurrentDateTime() {
+            const currentDate = new Date();
+            const date = currentDate.toLocaleDateString();
+            const time = currentDate.toLocaleTimeString();
+            
+            console.log("Current Date: " + date);
+            console.log("Current Time: " + time);
+        }
+    </script>
+</head>
+<body>
+    <h2>Display Current Date and Time</h2>
+    <button onclick="displayCurrentDateTime()">Show Date and Time</button>
+</body>
+</html>
+Each program has been written in a separate HTML file, and you can run them individually to see the desired output.
+
+
+
+
+
+
+
+
+
+
+
+
+
+7. JavaScript Programs
+b. Function to Get the Number of Occurrences of Each Letter in a String
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter Occurrences</title>
+    <script>
+        function countLetterOccurrences(str) {
+            const letterCount = {};
+            for (let char of str) {
+                if (char.match(/[a-zA-Z]/)) {  // Only count letters
+                    char = char.toLowerCase();
+                    letterCount[char] = (letterCount[char] || 0) + 1;
+                }
+            }
+            console.log(letterCount);
+            return letterCount;
+        }
+
+        function displayLetterOccurrences() {
+            const input = prompt("Enter a string:");
+            const result = countLetterOccurrences(input);
+            alert("Letter occurrences: " + JSON.stringify(result));
+        }
+    </script>
+</head>
+<body>
+    <h2>Count Letter Occurrences</h2>
+    <button onclick="displayLetterOccurrences()">Get Letter Occurrences</button>
+</body>
+</html>
+10. JavaScript Programs
+a. Function to Find the First Non-Repeated Character
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Non-Repeated Character</title>
+    <script>
+        function firstNonRepeatedChar(str) {
+            const charCount = {};
+            for (let char of str) {
+                charCount[char] = (charCount[char] || 0) + 1;
+            }
+            for (let char of str) {
+                if (charCount[char] === 1) {
+                    return char;
+                }
+            }
+            return null; // No non-repeated character found
+        }
+
+        function displayFirstNonRepeatedChar() {
+            const input = prompt("Enter a string:");
+            const result = firstNonRepeatedChar(input);
+            alert("First non-repeated character: " + result);
+        }
+    </script>
+</head>
+<body>
+    <h2>Find First Non-Repeated Character</h2>
+    <button onclick="displayFirstNonRepeatedChar()">Find Character</button>
+</body>
+</html>
+b. Function to Return a String with Letters in Alphabetical Order
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabetical Order</title>
+    <script>
+        function sortStringAlphabetically(str) {
+            return str.split('').sort().join('');
+        }
+
+        function displayAlphabeticalOrder() {
+            const input = prompt("Enter a string:");
+            const result = sortStringAlphabetically(input);
+            alert("String in alphabetical order: " + result);
+        }
+    </script>
+</head>
+<body>
+    <h2>Sort String Alphabetically</h2>
+    <button onclick="displayAlphabeticalOrder()">Sort String</button>
+</body>
+</html>
+
